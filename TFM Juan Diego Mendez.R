@@ -124,10 +124,6 @@ df2 <- df2 %>%
   mutate(text_extract = ifelse(is.na(text_extract), str_extract(text, "(?<=RESUELVE).*?(?=Notificar)"), text_extract)) %>%
   mutate(text_extract = ifelse(is.na(text_extract), str_extract(text, "(?<=PRIMERO).*?(?=SEGUNDO)"), text_extract))
 
-#actualizado 11 junio
-write.csv2(df2, "C:/Users/juanm/Box/archivos/Documentos Sync 2017/Viajes/Viaje 2022/Madrid/UC3M/TFM seminar/data_base_extract1.csv")
-
-
 # Classify decisions based on the presence of specific words
 df3 <- df2 %>%
   mutate(decision = case_when(
@@ -184,6 +180,9 @@ telecos <- df4 %>%
 # Standardize telecommunication company names
 telecos$teleco <- str_replace_all(telecos$teleco, c("telefonica" = "telefónica"))
 telecos$teleco <- str_replace_all(telecos$teleco, c("mas movil" = "masmovil"))
+
+#Write 
+write.csv2(df4, "C:/Users/juanm/Box/archivos/Documentos Sync 2017/Viajes/Viaje 2022/Madrid/UC3M/TFM seminar/data_base_extract_final.csv")
 
 
 #Plot1
